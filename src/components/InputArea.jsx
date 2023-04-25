@@ -32,19 +32,25 @@ function InputArea() {
         }
     };
 
+    const onSubmitHandler = (event) => {
+        if (content.name === "" || content.price === "") {
+            event.preventDefault();
+            return;
+        } else {
+            event.preventDefault();
+            alert(
+                `{name: ${content.name}, price: ${content.price.replaceAll(
+                    ",",
+                    ""
+                )}}`
+            );
+        }
+    };
+
     return (
         <StContainer>
             <h1>Input</h1>
-            <form
-                onSubmit={(event) => {
-                    event.preventDefault();
-                    alert(
-                        `{name: ${
-                            content.name
-                        }, price: ${content.price.replaceAll(",", "")}}`
-                    );
-                }}
-            >
+            <form onSubmit={onSubmitHandler}>
                 <StNormalBox>
                     <div>
                         <label>이름</label>&nbsp;
